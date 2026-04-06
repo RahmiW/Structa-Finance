@@ -6,6 +6,7 @@ import com.structa.bank.repositories.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +32,10 @@ public class AccountService {
         // Save both
         accountRepository.save(checking);
         accountRepository.save(savings);
+    }
+
+    // Read
+    public List<Account> getAccountsByUser(User user) {
+        return accountRepository.findByUser(user);
     }
 }
